@@ -1,0 +1,7 @@
+System.setProperty("webdriver.chrome.driver","C:\\Users\\jrohi\\Desktop\\rohit\\chromedriver.exe");
+		WebDriver driver=new ChromeDriver();
+		
+		driver.get("http:admin:admin@ the-internet.herokuapp.com/basic_auth");
+		
+		String popupMessage=driver.findElement(By.cssSelector("p")).getText();
+		System.out.println(popupMessage);
