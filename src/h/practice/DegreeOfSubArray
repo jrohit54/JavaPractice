@@ -1,0 +1,69 @@
+package h.practice;
+
+import java.util.HashMap;
+
+public class Practice {
+	
+	
+	public static void main(String[] args) {
+		
+		int [] arr={1,2,2,3,1,4};
+		 
+		int findDegree = findDegree(arr);
+		System.out.println("length of minimum sub array is "+findDegree);
+		
+		
+		
+	}
+	private static int findDegree(int[] arr) {
+		int degree=1;
+		int number=0;
+		int start=0;
+		int end=0;
+		int ans=arr.length;
+		HashMap<Integer,Integer> hm=new HashMap<>();
+		for(int i=0;i<arr.length;i++)
+		{
+			if(hm.containsKey(arr[i]))
+			{
+				hm.put(arr[i], hm.get(arr[i])+1);
+				if(hm.get(arr[i])>degree)
+				{
+					degree=hm.get(arr[i]);
+					number=arr[i];
+				}
+			}
+			else
+			{
+				hm.put(arr[i], 1);
+			}
+		}
+		System.out.println(hm);
+		System.out.println("degree is  "+degree+" and number is "+number);
+		
+		for(int i=0;i<arr.length;i++)
+		{
+			if(arr[i]==number)
+			{
+				start=i;
+				break;
+			}
+		}
+		
+		for(int i=arr.length-1;i>=0;i--)
+		{
+			if(arr[i]==number)
+			{
+				end=i;
+				break;
+			}
+		}
+		
+		ans=Math.min(ans, end-start+1);
+		return ans;
+		
+	}
+	
+	
+
+}
