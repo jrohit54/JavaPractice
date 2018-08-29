@@ -1,0 +1,56 @@
+package h.linklist;
+
+public class FirstNonRepeatingCharacter {
+
+	static int count[]=new int[256];
+	static int index;
+
+	public static void main(String[] args) {
+
+		String str="abvbasdghsdhjsdjsdgh";
+
+
+		int firstNonRepeating = firstNonRepeating(str);
+		if(firstNonRepeating==-1)
+		{
+			System.out.println("no repetating character");
+		}
+		else
+			System.out.println(str.charAt(firstNonRepeating));
+
+	}
+	private static int firstNonRepeating(String str) {
+
+		intcount(str);
+		index=-1;
+
+		for(int i=0;i<str.length();i++)
+		{
+			System.out.println("count of "+str.charAt(i)+"   ====="+count[str.charAt(i)]);
+			if(count[str.charAt(i)]==1)
+			{
+
+				index=i;
+				break;
+			}
+
+		}
+
+
+		return index;
+
+	}
+	private static void intcount(String str) {
+
+		for(int i=0;i<str.length();i++)
+		{
+			count[str.charAt(i)]++;
+		}
+
+
+	}
+
+
+
+
+}
