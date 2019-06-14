@@ -1,0 +1,67 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.Set;
+
+public class IntegerArrayDegress {
+
+	public static void main(String[] args) {
+
+		Integer[] arr= {1,2,2,3,2,5,2,3,3,3,4,5};
+		List<Integer> asList = Arrays.asList(arr);
+
+
+
+
+		//to find the degree of a
+		HashMap<Integer, Integer> hm=new HashMap<Integer, Integer>();
+
+
+		for(int i=0;i<arr.length;i++)
+		{
+			if(hm.containsKey(arr[i]))
+			{
+				hm.put(arr[i], hm.get(arr[i])+1);
+			}
+			else
+			{
+				hm.put(arr[i],1);
+			}
+
+		}
+		System.out.println(hm);
+		//to print the degree and length 
+		Set<Entry<Integer, Integer>> entrySet = hm.entrySet();
+		int length=arr.length,degree=1;
+		int key=0,value=0;
+		for (Entry<Integer, Integer> entry : entrySet) {
+
+			value=entry.getValue();
+			if(value>degree)
+			{   
+				key=entry.getKey();
+				degree=value;
+				length=asList.lastIndexOf(key)-asList.indexOf(key)+1;
+
+			}
+			else if(value==degree)
+			{
+
+				int number=Math.min(length,asList.lastIndexOf(key)-asList.indexOf(key)+1);
+				if(number<length)
+				{
+					length=number;
+					key=entry.getKey();
+				}
+			}
+
+		}
+		System.out.println("Key is  "+key+" the degree of array is "+degree+ " length is "+length);
+
+
+
+
+	}
+}
